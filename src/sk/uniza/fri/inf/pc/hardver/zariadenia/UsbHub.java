@@ -9,9 +9,9 @@ import sk.uniza.fri.inf.pc.hardver.UsbPort;
  */
 public class UsbHub implements IUsbZariadenie {
 
-    private String nazov;
-    private String vyrobca;
-    private UsbPort[] usbPorty;
+    private final String nazov;
+    private final String vyrobca;
+    private final UsbPort[] usbPorty;
 
     public UsbHub(String nazov, String vyrobca, int pocetUsbPortov) {
         this.nazov = nazov;
@@ -98,6 +98,26 @@ public class UsbHub implements IUsbZariadenie {
                 format += "(volny)";
             }
 
+        }
+        return format;
+    }
+
+    public String getPopisZariadenia(int odsadenie) {
+        String line = "";
+        String format = this.getClass().getSimpleName() + " " + this.getVyrobca() + " " + this.getNazov() + " (pocet portov: " + this.getPocetUsbPortov() + ")\n";
+        for (int i = 0; i < this.usbPorty.length; i++) {
+
+            format += line;
+            line = "\n";
+            for (int j = 0; j < odsadenie; j++) {
+                format+= "   ";
+            }
+            format += "  [" + i + "] ";
+            if (this.usbPorty[i].jeObsadeny()) {
+                format += usbPorty[i].getUsbZariadenie().getPopisZariadenia(odsadenie + 1);
+            } else {
+                format += "(volny)";
+            }
         }
         return format;
     }

@@ -36,7 +36,7 @@ public class Pocitac {
         System.out.println("Zariadenia: ");
         for (int i = 0; i < this.pocetUsbPortov; i++) {
             if (this.porty[i].jeObsadeny()) {
-                System.out.println("[" + i + "] " + porty[i].getUsbZariadenie().toString());
+                System.out.println("[" + i + "] " + porty[i].getUsbZariadenie().getPopisZariadenia(0));
             } else {
                 System.out.println("[" + i + "] (volny)");
             }

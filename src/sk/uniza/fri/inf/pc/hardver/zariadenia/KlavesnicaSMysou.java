@@ -46,7 +46,8 @@ public class KlavesnicaSMysou implements IUsbZariadenie, IKlavesnica, IMys {
         this.port = null;
     }
 
-    public String toString() {
+    @Override
+    public String getPopisZariadenia(int index) {
         String numerickaCast;
         if (this.maNumerickuCast) {
             numerickaCast = "ano";

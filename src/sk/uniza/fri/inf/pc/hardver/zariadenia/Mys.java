@@ -58,7 +58,7 @@ public class Mys implements IUsbZariadenie {
         this.port = null;
     }
 
-    public String toString() {
+    public String getPopisZariadenia(int odsadenie) {
         String bezdrotova;
         if (this.jeBezdrotova) {
             bezdrotova = "ano";

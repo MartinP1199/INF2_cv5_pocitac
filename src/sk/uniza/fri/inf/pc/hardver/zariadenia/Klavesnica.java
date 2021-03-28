@@ -52,7 +52,7 @@ public class Klavesnica implements IUsbZariadenie {
         this.port = null;
     }
 
-    public String toString() {
+    public String getPopisZariadenia(int odsadenie) {
         String numerickaCast;
         if (this.maNumerickuCast) {
             numerickaCast = "ano";

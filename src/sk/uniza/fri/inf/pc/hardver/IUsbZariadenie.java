@@ -10,4 +10,5 @@ public interface IUsbZariadenie {
     String getVyrobca();
     void pripojDoUsbPortu(UsbPort usbPort);
     void odpojZUsbPortu();
+    String getPopisZariadenia(int index);
 }
