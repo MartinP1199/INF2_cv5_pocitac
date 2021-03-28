@@ -63,6 +63,26 @@ public class UsbHub implements IUsbZariadenie {
         this.odpojZUsbPortu();
     }
 
+    public void vypisVsetkyMysky() {
+        for (int i = 0; i < this.usbPorty.length; i++) {
+            if (this.usbPorty[i].jeObsadeny() && this.usbPorty[i].getUsbZariadenie() instanceof IMys) {
+                System.out.println("[" + i + "] " + usbPorty[i].getUsbZariadenie().toString());
+            } else if (this.usbPorty[i].getUsbZariadenie() instanceof UsbHub) {
+                ((UsbHub)this.usbPorty[i].getUsbZariadenie()).vypisVsetkyMysky();
+            }
+        }
+    }
+
+    public void vypisVsetkyKlavesnice() {
+        for (int i = 0; i < this.usbPorty.length; i++) {
+            if (this.usbPorty[i].jeObsadeny() && this.usbPorty[i].getUsbZariadenie() instanceof IKlavesnica) {
+                System.out.println("[" + i + "] " + usbPorty[i].getUsbZariadenie().toString());
+            } else if (this.usbPorty[i].getUsbZariadenie() instanceof UsbHub) {
+                ((UsbHub)this.usbPorty[i].getUsbZariadenie()).vypisVsetkyKlavesnice();
+            }
+        }
+    }
+
     @Override
     public String toString() {
         String line = "";
