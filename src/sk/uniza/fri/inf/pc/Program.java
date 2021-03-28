@@ -3,6 +3,7 @@ package sk.uniza.fri.inf.pc;
 import sk.uniza.fri.inf.pc.hardver.Pocitac;
 import sk.uniza.fri.inf.pc.hardver.UsbPort;
 import sk.uniza.fri.inf.pc.hardver.zariadenia.Klavesnica;
+import sk.uniza.fri.inf.pc.hardver.zariadenia.KlavesnicaSMysou;
 import sk.uniza.fri.inf.pc.hardver.zariadenia.Mys;
 import sk.uniza.fri.inf.pc.hardver.zariadenia.UsbHub;
 
@@ -29,6 +30,12 @@ public class Program {
         klavesnica.pripojDoUsbPortu(usbHub.getUsbPort(5));
         UsbHub usbHubMaly = new UsbHub("HUE-S2B USB 3.0", "AXAGON", 4);
         usbHubMaly.pripojDoUsbPortu(usbHub.getUsbPort(2));
+        KlavesnicaSMysou klavesnicaSMysou = new KlavesnicaSMysou("Klavesnica s myskou", "Logitech", false);
+        klavesnicaSMysou.pripojDoUsbPortu(usbHubMaly.getVolnyUsbPort());
+        System.out.println("Mysky: ");
+        mojNotebook.vypisVsetkyMysky();
+        System.out.println("Klavesnice: ");
+        mojNotebook.vypisVsetkyKlavesnice();
         mojNotebook.vypisVsetkyZariadenia();
     }
 

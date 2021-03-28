@@ -8,7 +8,7 @@ import sk.uniza.fri.inf.pc.hardver.UsbPort;
  *
  * @author pasto
  */
-public class Klavesnica implements IUsbZariadenie {
+public class Klavesnica implements IUsbZariadenie, IKlavesnica {
     private String nazov;
     private String vyrobca;
     private UsbPort port;
