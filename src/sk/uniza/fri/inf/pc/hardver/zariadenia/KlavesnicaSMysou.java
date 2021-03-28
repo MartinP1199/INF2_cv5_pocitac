@@ -3,7 +3,7 @@ package sk.uniza.fri.inf.pc.hardver.zariadenia;
 import sk.uniza.fri.inf.pc.hardver.IUsbZariadenie;
 import sk.uniza.fri.inf.pc.hardver.UsbPort;
 
-public class KlavesnicaSMysou implements IUsbZariadenie {
+public class KlavesnicaSMysou implements IUsbZariadenie, IMys, IKlavesnica {
     private String nazov;
     private String vyrobca;
     private boolean maNumerickuCast;
