@@ -30,6 +30,11 @@ public class Program {
         UsbHub usbHubMaly = new UsbHub("HUE-S2B USB 3.0", "AXAGON", 4);
         usbHubMaly.pripojDoUsbPortu(usbHub.getUsbPort(2));
         mojNotebook.vypisVsetkyZariadenia();
+
+        System.out.println("Myšky:");
+        mojNotebook.vypisVsetkyMysky();
+        System.out.println("Klavesnice:");
+        mojNotebook.vypisVsetkyKlavesnice();
     }
 
 }

@@ -46,7 +46,7 @@ public class Pocitac {
     public void vypisVsetkyMysky() {
         for (int i = 0; i < this.pocetUsbPortov; i++) {
             if (this.porty[i].jeObsadeny() && this.porty[i].getUsbZariadenie() instanceof IMys) {
-                System.out.println("[" + i + "] " + porty[i].getUsbZariadenie().toString());
+                System.out.println("[" + i + "] " + porty[i].getUsbZariadenie().getPopisZariadenia(0));
             } else if (this.porty[i].getUsbZariadenie() instanceof UsbHub) {
                 ((UsbHub)this.porty[i].getUsbZariadenie()).vypisVsetkyMysky();
             }
@@ -56,7 +56,7 @@ public class Pocitac {
     public void vypisVsetkyKlavesnice() {
         for (int i = 0; i < this.pocetUsbPortov; i++) {
             if (this.porty[i].jeObsadeny() && this.porty[i].getUsbZariadenie() instanceof IKlavesnica) {
-                System.out.println("[" + i + "] " + porty[i].getUsbZariadenie().toString());
+                System.out.println("[" + i + "] " + porty[i].getUsbZariadenie().getPopisZariadenia(0));
             } else if (this.porty[i].getUsbZariadenie() instanceof UsbHub) {
                 ((UsbHub)this.porty[i].getUsbZariadenie()).vypisVsetkyKlavesnice();
             }

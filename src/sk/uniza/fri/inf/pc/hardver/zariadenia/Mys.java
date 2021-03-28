@@ -8,7 +8,7 @@ import sk.uniza.fri.inf.pc.hardver.UsbPort;
  *
  * @author pasto
  */
-public class Mys implements IUsbZariadenie {
+public class Mys implements IUsbZariadenie, IMys {
     private String nazov;
     private String vyrobca;
     private UsbPort port;

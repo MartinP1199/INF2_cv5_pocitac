@@ -66,7 +66,7 @@ public class UsbHub implements IUsbZariadenie {
     public void vypisVsetkyMysky() {
         for (int i = 0; i < this.usbPorty.length; i++) {
             if (this.usbPorty[i].jeObsadeny() && this.usbPorty[i].getUsbZariadenie() instanceof IMys) {
-                System.out.println("[" + i + "] " + usbPorty[i].getUsbZariadenie().toString());
+                System.out.println("[" + i + "] " + usbPorty[i].getUsbZariadenie().getPopisZariadenia(0));
             } else if (this.usbPorty[i].getUsbZariadenie() instanceof UsbHub) {
                 ((UsbHub)this.usbPorty[i].getUsbZariadenie()).vypisVsetkyMysky();
             }
@@ -76,31 +76,14 @@ public class UsbHub implements IUsbZariadenie {
     public void vypisVsetkyKlavesnice() {
         for (int i = 0; i < this.usbPorty.length; i++) {
             if (this.usbPorty[i].jeObsadeny() && this.usbPorty[i].getUsbZariadenie() instanceof IKlavesnica) {
-                System.out.println("[" + i + "] " + usbPorty[i].getUsbZariadenie().toString());
+                System.out.println("[" + i + "] " + usbPorty[i].getUsbZariadenie().getPopisZariadenia(0));
             } else if (this.usbPorty[i].getUsbZariadenie() instanceof UsbHub) {
                 ((UsbHub)this.usbPorty[i].getUsbZariadenie()).vypisVsetkyKlavesnice();
             }
         }
     }
 
-    @Override
-    public String toString() {
-        String line = "";
-        String format = this.getClass().getSimpleName() + " " + this.getVyrobca() + " " + this.getNazov() + " (pocet portov: " + this.getPocetUsbPortov() + ")\n";
-        for (int i = 0; i < this.usbPorty.length; i++) {
 
-            format += line;
-            line = "\n";
-            format += "  [" + i + "] ";
-            if (this.usbPorty[i].jeObsadeny()) {
-                format += usbPorty[i].getUsbZariadenie().toString();
-            } else {
-                format += "(volny)";
-            }
-
-        }
-        return format;
-    }
 
     public String getPopisZariadenia(int odsadenie) {
         String line = "";
@@ -110,7 +93,7 @@ public class UsbHub implements IUsbZariadenie {
             format += line;
             line = "\n";
             for (int j = 0; j < odsadenie; j++) {
-                format+= "   ";
+                format += "   ";
             }
             format += "  [" + i + "] ";
             if (this.usbPorty[i].jeObsadeny()) {
