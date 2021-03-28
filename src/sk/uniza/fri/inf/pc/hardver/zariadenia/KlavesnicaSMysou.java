@@ -3,31 +3,41 @@ package sk.uniza.fri.inf.pc.hardver.zariadenia;
 import sk.uniza.fri.inf.pc.hardver.IUsbZariadenie;
 import sk.uniza.fri.inf.pc.hardver.UsbPort;
 
-/**
- * 17. 3. 2021 - 16:54
- *
- * @author pasto
- */
-public class KlavesnicaSMysou implements IUsbZariadenie, IKlavesnica, IMys {
+public class KlavesnicaSMysou implements IUsbZariadenie {
     private String nazov;
     private String vyrobca;
-    private UsbPort port;
     private boolean maNumerickuCast;
+    private UsbPort port;
 
     public KlavesnicaSMysou(String nazov, String vyrobca, boolean maNumerickuCast) {
         this.nazov = nazov;
         this.vyrobca = vyrobca;
         this.maNumerickuCast = maNumerickuCast;
     }
-
     @Override
     public String getNazov() {
         return this.nazov;
     }
-
     @Override
     public String getVyrobca() {
         return this.vyrobca;
+    }
+
+    @Override
+    public void pripojDoUsbPortu(UsbPort usbPort) {
+        if (usbPort == null) {
+            System.out.println("Port je null");
+        }
+        this.port = usbPort;
+        this.port.setUsbZariadenie(this);
+    }
+
+    @Override
+    public void odpojZUsbPortu() {
+        if (this.port != null) {
+            this.port.setUsbZariadenie(null);
+            this.port = null;
+        }
     }
 
     public boolean isMaNumerickuCast() {
@@ -35,25 +45,12 @@ public class KlavesnicaSMysou implements IUsbZariadenie, IKlavesnica, IMys {
     }
 
     @Override
-    public void pripojDoUsbPortu(UsbPort usbPort) {
-        this.port = usbPort;
-        this.port.setUsbZariadenie(this);
-    }
-
-    @Override
-    public void odpojZUsbPortu() {
-        this.port.setUsbZariadenie(null);
-        this.port = null;
-    }
-
-    @Override
     public String getPopisZariadenia(int index) {
-        String numerickaCast;
+        String podmienka = "nie";
         if (this.maNumerickuCast) {
-            numerickaCast = "ano";
-        } else {
-            numerickaCast = "nie";
+            podmienka = "áno";
         }
-        return "Klavesnica " + this.vyrobca + " " + this.nazov + " (numericka cast: " + numerickaCast + ")";
+        return this.vyrobca + " " + this.nazov +
+                " (má numerickú časť: " + podmienka + ").";
     }
 }

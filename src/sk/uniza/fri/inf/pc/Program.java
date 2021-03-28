@@ -37,6 +37,11 @@ public class Program {
         System.out.println("Klavesnice: ");
         mojNotebook.vypisVsetkyKlavesnice();
         mojNotebook.vypisVsetkyZariadenia();
+
+        System.out.println("Myšky:");
+        mojNotebook.vypisVsetkyMysky();
+        System.out.println("Klavesnice:");
+        mojNotebook.vypisVsetkyKlavesnice();
     }
 
 }
